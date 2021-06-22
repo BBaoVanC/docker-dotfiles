@@ -1,12 +1,14 @@
-FROM debian:IMAGE_TAG
+FROM archlinux:base-devel
 LABEL MAINTAINER="bbaovanc@bbaovanc.com"
 
-RUN apt-get update -y
-RUN apt-get upgrade -y
-RUN apt-get install -y apt-utils
-RUN apt-get install -y curl git zsh neovim python3 python3-pip python3-setuptools python3-neovim nodejs yarn fzf ranger
+RUN echo "keyserver keyserver.ubuntu.com" >> /etc/pacman.d/gnupg/gpg.conf
 
-RUN useradd -mG sudo user
+RUN pacman -Syu --noconfirm
+RUN pacman -S --needed --noconfirm sudo curl git gcc make zsh neovim python python-pip python-setuptools python-neovim yarn fzf ranger highlight mediainfo man-db man-pages texinfo
+
+RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
+RUN useradd -mG wheel user
 RUN chsh -s /bin/zsh user
 
 
@@ -16,6 +18,9 @@ ENV USER=user
 ENV TERM=xterm-256color
 ENV DISABLE_SSH_AGENT=true
 WORKDIR /home/user
+
+COPY paru_install.sh /home/user
+RUN ~/paru_install.sh
 
 COPY repo_init.sh /home/user
 RUN ~/repo_init.sh
