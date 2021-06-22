@@ -1,6 +1,8 @@
 FROM archlinux:IMAGE_TAG
 LABEL MAINTAINER="bbaovanc@bbaovanc.com"
 
+RUN echo "keyserver keyserver.ubuntu.com" >> /etc/pacman.d/gnupg/gpg.conf
+
 RUN pacman -Syu --noconfirm
 RUN pacman -S --needed --noconfirm sudo curl git gcc make zsh neovim python python-pip python-setuptools python-neovim yarn fzf ranger highlight mediainfo
 
