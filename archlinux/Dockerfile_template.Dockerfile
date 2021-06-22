@@ -19,6 +19,9 @@ ENV TERM=xterm-256color
 ENV DISABLE_SSH_AGENT=true
 WORKDIR /home/user
 
+COPY paru_install.sh /home/user
+RUN ~/paru_install.sh
+
 COPY repo_init.sh /home/user
 RUN ~/repo_init.sh
 RUN touch ~/.config/zsh/zshrc_nosync
