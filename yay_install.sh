@@ -2,6 +2,6 @@
 
 mkdir ~/downloads/
 cd ~/downloads/
-git clone https://aur.archlinux.org/paru-bin.git
-cd paru-bin/
+git clone https://aur.archlinux.org/yay.git
+cd yay/
 makepkg -sic --noconfirm
