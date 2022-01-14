@@ -23,6 +23,7 @@ COPY yay_install.sh /home/user
 RUN ~/yay_install.sh
 
 COPY repo_init.sh /home/user
+COPY 0001-Remove-ssh-override-on-gitconfig.patch /home/user
 RUN ~/repo_init.sh
 RUN touch ~/.config/zsh/zshrc_nosync
 # Run zshrc so it triggers zinit to clone all plugins

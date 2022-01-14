@@ -1,0 +1,29 @@
+From e2e37f98c0e9bfd58692953fb5413b6ae773ae6c Mon Sep 17 00:00:00 2001
+From: BBaoVanC <bbaovanc@bbaovanc.com>
+Date: Fri, 14 Jan 2022 17:40:29 -0600
+Subject: [PATCH] Remove ssh override on gitconfig
+
+---
+ .gitconfig | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/.gitconfig b/.gitconfig
+index c884cc3..0ecc3c0 100644
+--- a/.gitconfig
++++ b/.gitconfig
+@@ -19,12 +19,6 @@
+ [pull]
+ 	ff = only
+ 
+-[url "ssh://git@github.com/"]
+-	insteadOf = https://github.com/
+-[url "ssh://git@git.bbaovanc.com/"]
+-	insteadOf = https://git.bbaovanc.com/
+-[url "ssh://git@git.boba.best/"]
+-	insteadOf = https://git.boba.best/
+ [web]
+ 	browser = firefox-developer-edition
+ [browser "firefox-developer-edition"]
+-- 
+2.34.1
+
