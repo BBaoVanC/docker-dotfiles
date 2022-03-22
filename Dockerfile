@@ -16,17 +16,21 @@ USER user
 SHELL ["/bin/zsh", "-c"]
 ENV USER=user
 ENV TERM=xterm-256color
-ENV DISABLE_SSH_AGENT=true
 WORKDIR /home/user
 
 COPY yay_install.sh /home/user
 RUN ~/yay_install.sh
 
+# Set up repo
 COPY repo_init.sh /home/user
-COPY 0001-Remove-ssh-override-on-gitconfig.patch /home/user/downloads
 RUN ~/repo_init.sh
+
+# Apply patches for docker-dotfiles
+COPY patches/ /home/user/downloads/patches/
+RUN git am --no-gpg-sign downloads/patches/*
+
 RUN touch ~/.config/zsh/zshrc_nosync
-# Run zshrc so it triggers zinit to clone all plugins
+# Run zshrc so it triggers antibody to clone all plugins
 RUN zsh ~/.config/zsh/zshrc
 # Running zshrc doesn't install gitstatusd for some reason
 RUN ~/.cache/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-romkatv-SLASH-powerlevel10k/gitstatus/install

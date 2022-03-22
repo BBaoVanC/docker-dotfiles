@@ -1,0 +1,25 @@
+From 80f50caf3245e15f075e1ca9080b79c1bcf8259e Mon Sep 17 00:00:00 2001
+From: BBaoVanC <bbaovanc@bbaovanc.com>
+Date: Tue, 22 Mar 2022 17:09:34 -0500
+Subject: [PATCH 3/3] Don't set Firefox as the browser in .gitconfig
+
+---
+ .gitconfig | 5 -----
+ 1 file changed, 5 deletions(-)
+
+diff --git a/.gitconfig b/.gitconfig
+index 26f25ec..f72ea01 100644
+--- a/.gitconfig
++++ b/.gitconfig
+@@ -15,8 +15,3 @@
+ 	graph = log --oneline --graph
+ [pull]
+ 	ff = only
+-
+-[web]
+-	browser = firefox-developer-edition
+-[browser "firefox-developer-edition"]
+-	cmd = firefox-developer-edition
+-- 
+2.35.1
+
