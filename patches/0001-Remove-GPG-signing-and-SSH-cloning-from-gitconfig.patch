@@ -1,0 +1,41 @@
+From 74cd4d5cdcb4fb9c6ba36d70d2c7b65ea6110a54 Mon Sep 17 00:00:00 2001
+From: BBaoVanC <bbaovanc@bbaovanc.com>
+Date: Sat, 16 Apr 2022 21:28:56 -0500
+Subject: [PATCH] Remove GPG signing and SSH cloning from gitconfig
+
+---
+ .gitconfig | 12 ------------
+ 1 file changed, 12 deletions(-)
+
+diff --git a/.gitconfig b/.gitconfig
+index 9e797f8..f72ea01 100644
+--- a/.gitconfig
++++ b/.gitconfig
+@@ -1,11 +1,8 @@
+ [user]
+ 	name = BBaoVanC
+ 	email = bbaovanc@bbaovanc.com
+-	signingKey = CB7CCED9209E47B9B99B8E1D18089E4E3CCF1D3A
+ [core]
+ 	editor = nvim
+-[commit]
+-	gpgsign = true
+ [filter "lfs"]
+ 	process = git-lfs filter-process
+ 	required = true
+@@ -18,12 +15,3 @@
+ 	graph = log --oneline --graph
+ [pull]
+ 	ff = only
+-
+-[url "ssh://git@github.com/"]
+-	insteadOf = https://github.com/
+-[url "ssh://git@git.bbaovanc.com/"]
+-	insteadOf = https://git.bbaovanc.com/
+-[url "ssh://git@git.boba.best/"]
+-	insteadOf = https://git.boba.best/
+-[tag]
+-	gpgSign = true
+-- 
+2.35.3
+
