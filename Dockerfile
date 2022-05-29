@@ -1,4 +1,4 @@
-FROM archlinux:base-devel
+FROM archlinux:base-devel-20220522.0.57327
 LABEL MAINTAINER="bbaovanc@bbaovanc.com"
 
 RUN echo "keyserver keyserver.ubuntu.com" >> /etc/pacman.d/gnupg/gpg.conf
