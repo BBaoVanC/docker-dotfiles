@@ -23,6 +23,7 @@ RUN ~/yay_install.sh
 
 # Set up repo
 COPY repo_init.sh /home/user
+COPY dotfiles-commit.txt /home/user
 RUN ~/repo_init.sh
 
 # Apply patches for docker-dotfiles
@@ -35,5 +36,7 @@ RUN zsh ~/.config/zsh/zshrc
 # Running zshrc doesn't install gitstatusd for some reason
 RUN ~/.cache/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-romkatv-SLASH-powerlevel10k/gitstatus/install
 RUN nvim --headless +PlugInstall +qa
+RUN sudo pacman -S --noconfirm npm
+RUN npm -C ~/.config/coc/extensions/ install
 
 ENTRYPOINT /bin/zsh
