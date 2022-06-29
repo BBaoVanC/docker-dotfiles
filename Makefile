@@ -1,5 +1,7 @@
 build:
 	docker compose build
 
-run:
+run: build
 	docker compose run dotfiles
+
+.PHONY: build run
