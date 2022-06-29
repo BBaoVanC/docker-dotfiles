@@ -42,12 +42,6 @@ RUN (cd /tmp/lf/ && makepkg --noconfirm)
 FROM base AS docker-dotfiles
 LABEL MAINTAINER="bbaovanc@bbaovanc.com"
 
-RUN sudo pacman -S --noconfirm \
-        fzf ranger \
-        neovim nodejs npm yarn \
-        man-db man-pages texinfo \
-        dnsutils mediainfo ncdu \
-        python python-pip python-setuptools python-virtualenv python-neovim python-pillow
 
 # Install built AUR packages
 COPY --from=yay-builder /tmp/yay/*.pkg.tar.zst /tmp
@@ -78,9 +72,18 @@ RUN zsh ~/.config/zsh/zshrc
 # Running zshrc doesn't install gitstatusd for some reason
 RUN ~/.cache/antibody/https-COLON--SLASH--SLASH-github.com-SLASH-romkatv-SLASH-powerlevel10k/gitstatus/install
 
-RUN sudo pacman -S --noconfirm neovim npm
+RUN sudo pacman -S --noconfirm neovim npm yarn
 RUN nvim --headless +PlugInstall +qa
 RUN npm -C ~/.config/coc/extensions/ install
+
+
+# Utility packages
+RUN sudo pacman -S --needed --noconfirm \
+        tree fd fzf ranger \
+        man-db man-pages texinfo \
+        dnsutils mediainfo ncdu \
+        python python-pip python-setuptools python-virtualenv python-neovim python-pillow
+
 
 # Cleanup
 RUN sudo rm /var/cache/pacman/pkg/*
