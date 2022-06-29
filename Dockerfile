@@ -59,7 +59,7 @@ RUN sudo pacman -U --noconfirm /tmp/lf*.pkg.tar.zst
 RUN rm /tmp/lf*.pkg.tar.zst
 
 # Set up repo
-ARG DOTFILES_COMMIT=de38179e82559b31460d65a67d18a4d3181cf610
+ARG DOTFILES_COMMIT=7c95d30200df9c82c0525d9af0178279ea4e18de
 RUN git init
 RUN git remote add origin https://github.com/BBaoVanC/dotfiles.git
 RUN git fetch
@@ -69,6 +69,9 @@ RUN git checkout ${DOTFILES_COMMIT}
 COPY --chown=user:user patches/ /tmp/patches/
 RUN git am --no-gpg-sign /tmp/patches/*
 RUN rm -rf /tmp/patches/
+
+# Clone submodules
+RUN git submodule update --init --recursive
 
 # Run zshrc so it triggers antibody to clone all plugins
 RUN zsh ~/.config/zsh/zshrc
