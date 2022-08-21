@@ -53,7 +53,7 @@ RUN sudo pacman -U --noconfirm /tmp/lf*.pkg.tar.zst
 RUN rm /tmp/lf*.pkg.tar.zst
 
 # Set up repo
-ARG DOTFILES_COMMIT=7c95d30200df9c82c0525d9af0178279ea4e18de
+ARG DOTFILES_COMMIT=ff0233fa4fb609f11e41c2a2d363d1df9852ebf4
 RUN git init
 RUN git remote add origin https://github.com/BBaoVanC/dotfiles.git
 RUN git fetch
@@ -82,7 +82,8 @@ RUN sudo pacman -S --needed --noconfirm \
         tree fd fzf ranger \
         man-db man-pages texinfo \
         dnsutils mediainfo ncdu \
-        python python-pip python-setuptools python-virtualenv python-neovim python-pillow
+        python python-pip python-setuptools python-virtualenv python-neovim python-pillow \
+        sccache
 
 
 # Cleanup
