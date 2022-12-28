@@ -1,5 +1,5 @@
 # Create the base image
-FROM archlinux:base-devel-20221218.0.111778 AS base
+FROM archlinux:base-devel-20221225.0.113672 AS base
 RUN sed -i 's/^#Color$/Color/' /etc/pacman.conf
 RUN echo "keyserver keyserver.ubuntu.com" >> /etc/pacman.d/gnupg/gpg.conf
 RUN pacman -Syu --noconfirm
