@@ -53,7 +53,7 @@ RUN sudo pacman -U --noconfirm /tmp/lf*.pkg.tar.zst
 RUN rm /tmp/lf*.pkg.tar.zst
 
 # Set up repo
-ARG DOTFILES_COMMIT=19b980a5b970bcb0caed16ec614782bbac8c7060
+ARG DOTFILES_COMMIT=303d40735279aac9167bed71e736bd7b15224a29
 RUN git init
 RUN git remote add origin https://github.com/BBaoVanC/dotfiles.git
 RUN git fetch
@@ -81,7 +81,7 @@ RUN npm -C ~/.config/coc/extensions/ install
 RUN sudo pacman -S --needed --noconfirm \
         tree fd fzf ranger \
         man-db man-pages texinfo \
-        dnsutils mediainfo ncdu \
+        inetutils dnsutils mediainfo ncdu \
         python python-pip python-setuptools python-virtualenv python-neovim python-pillow \
         sccache
 
