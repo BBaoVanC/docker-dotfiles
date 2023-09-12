@@ -53,7 +53,7 @@ RUN sudo pacman -U --noconfirm /tmp/lf*.pkg.tar.zst
 RUN rm /tmp/lf*.pkg.tar.zst
 
 # Set up repo
-ARG DOTFILES_COMMIT=b02b0664da14bc1163b624002a6a5fd9c6d8104c
+ARG DOTFILES_COMMIT=611a1a6af1cc6aefb10b90859e9e47afa981fac2
 RUN git init
 RUN git remote add origin https://github.com/BBaoVanC/dotfiles.git
 RUN git fetch
