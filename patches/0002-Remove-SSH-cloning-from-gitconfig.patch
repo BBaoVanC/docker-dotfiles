@@ -1,4 +1,4 @@
-From b5f0c93edd497162ef54ba26685d3c9d99d4fe2c Mon Sep 17 00:00:00 2001
+From fc1a1898622c7deb57c09d68cc67f4afd214af64 Mon Sep 17 00:00:00 2001
 From: BBaoVanC <bbaovanc@bbaovanc.com>
 Date: Sun, 29 May 2022 16:51:31 -0500
 Subject: [PATCH 2/2] Remove SSH cloning from gitconfig
@@ -8,11 +8,11 @@ Subject: [PATCH 2/2] Remove SSH cloning from gitconfig
  1 file changed, 7 deletions(-)
 
 diff --git a/.gitconfig b/.gitconfig
-index efc6d92..f222aa7 100644
+index 31bf49c..a15b25f 100644
 --- a/.gitconfig
 +++ b/.gitconfig
-@@ -16,10 +16,3 @@
- 	isolog = log --date=iso-strict
+@@ -18,10 +18,3 @@
+ 	fork-point = !zsh -c 'diff --old-line-format='' --new-line-format='' <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | head -1' -
  [pull]
  	ff = only
 -
@@ -23,5 +23,5 @@ index efc6d92..f222aa7 100644
 -[url "ssh://git@git.boba.best/"]
 -	insteadOf = https://git.boba.best/
 -- 
-2.36.1
+2.42.0
 
